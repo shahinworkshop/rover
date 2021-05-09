@@ -11,7 +11,7 @@ use App\Model\Rover\Rover;
 use App\Model\Move\Direction;
 use App\Model\Reader\Reader;
 use App\Model\Rover\RoverSquad;
-use App\controller\Printer;
+use App\Controller\Printer;
 use App\Model\Commands\Directions;
 
 /**
