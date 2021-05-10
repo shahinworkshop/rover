@@ -49,13 +49,11 @@ final class RoverSetup implements Command
         $input = str_ireplace(PHP_EOL, '', $input);
         $result = $this->explode($input);
 
-        if (!$this->plateau->isInArea($result[0], $result[1]))
-            throw new \Exception('One of the rovers went out of Area!');
-
         $rover->setX($result[0]);
         $rover->setY($result[1]);
         $rover->setPosition(strtoupper($result[2]));
-
+        if (!$this->plateau->isInArea($rover))
+            throw new \Exception('One of the rovers went out of Area!');
         return $rover;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Model\Plateau;
 
 use App\Interfaces\Model\Plateau\Plateau as PlateauI;
+use App\Interfaces\Model\Rover\Rover;
 
 class Plateau implements PlateauI
 {
@@ -43,9 +44,13 @@ class Plateau implements PlateauI
         return $this->validator($result);
     }
 
-    public function isInArea($x, $y): bool
+    public function isInArea(Rover $rover): bool
     {
-        if ($x > $this->x or $y > $this->y)
+        if (
+            ($rover->getY() > $this->getMaxY() or $rover->getX() > $this->getMaxX())
+            or
+            ($rover->getY() < $this->getMinY() or $rover->getX() < $this->getMinX())
+        )
             return false;
         return true;
     }
